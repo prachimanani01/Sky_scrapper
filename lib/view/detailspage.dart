@@ -17,6 +17,7 @@ class DetailsPage extends StatelessWidget {
     ApiProvider apiProviderTrue =
         Provider.of<ApiProvider>(context, listen: true);
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: FutureBuilder(
         future: Provider.of<ApiProvider>(context, listen: false)
             .frommap(apiProviderTrue.search),
@@ -27,7 +28,7 @@ class DetailsPage extends StatelessWidget {
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: NetworkImage(
-                      'https://i.pinimg.com/originals/96/df/d4/96dfd411ab0e68f8bc1eb47e4eee8771.gif'),
+                      'https://i.pinimg.com/originals/02/3a/bf/023abf6fac6adaa2b9778c532f800f52.gif'),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -67,19 +68,6 @@ class DetailsPage extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 16),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Wind Speed  ${ha.currentModal.wind_kph} m/s',
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
                         Column(
                           children: [
                             Padding(
@@ -98,37 +86,6 @@ class DetailsPage extends StatelessWidget {
                                               .first.hour[index];
                                           return Padding(
                                             padding: const EdgeInsets.all(8.0),
-                                            child: Container(
-                                              height: 170,
-                                              width: 80,
-                                              decoration: BoxDecoration(
-                                                  color: Colors.white10,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          50)),
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceAround,
-                                                children: [
-                                                  Text(
-                                                    '${ha.forcatModal.forcastday.first.date}',
-                                                    style: TextStyle(
-                                                        color: Colors.white,
-                                                        fontSize: 12),
-                                                  ),
-                                                  Image.network(
-                                                    'https:${hour.hourConditionModal.icon}',
-                                                    height: 50,
-                                                  ),
-                                                  Text(
-                                                    '${ha.currentModal.pressure_mb}',
-                                                    style: TextStyle(
-                                                        color: Colors.white),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
                                           );
                                         }),
                                       ],

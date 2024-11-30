@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 import 'package:weatherapp/model/model.dart';
 import 'package:weatherapp/provider/api_provider.dart';
 import 'package:weatherapp/view/detailspage.dart';
-import 'package:weatherapp/view/favPage.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({super.key});
@@ -18,6 +17,7 @@ class Homepage extends StatelessWidget {
         Provider.of<ApiProvider>(context, listen: true);
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: FutureBuilder(
         future: Provider.of<ApiProvider>(context, listen: false)
             .frommap(apiProviderTrue.search),
@@ -28,7 +28,7 @@ class Homepage extends StatelessWidget {
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: NetworkImage(
-                      'https://i.pinimg.com/originals/96/df/d4/96dfd411ab0e68f8bc1eb47e4eee8771.gif'),
+                      'https://i.pinimg.com/originals/02/3a/bf/023abf6fac6adaa2b9778c532f800f52.gif'),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -53,7 +53,7 @@ class Homepage extends StatelessWidget {
                                   decoration: InputDecoration(
                                     filled: true,
                                     fillColor: Colors.white.withOpacity(0.6),
-                                    hintText: 'Search...',
+                                    hintText: 'Search',
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(18.0),
                                       borderSide: BorderSide.none,
@@ -62,13 +62,6 @@ class Homepage extends StatelessWidget {
                                 ),
                                 SizedBox(
                                   height: 60,
-                                ),
-                                Text(
-                                  "${ha!.currentModal.condition.text} ",
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.grey,
-                                  ),
                                 ),
                                 Text(
                                   "${ha!.currentModal.temp_c}°C",
@@ -91,24 +84,6 @@ class Homepage extends StatelessWidget {
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                InkWell(
-                                  onTap: () {
-                                    apiProvider.addToFavourite(
-                                        ha.locationModal.name,
-                                        ha.currentModal.temp_c.toString(),
-                                        ha.locationModal.name);
-
-                                    Navigator.of(context)
-                                        .push(MaterialPageRoute(
-                                      builder: (context) => FavPage(),
-                                    ));
-                                  },
-                                  child: Icon(
-                                    Icons.favorite_border,
-                                    size: 30,
-                                    color: Colors.white,
-                                  ),
-                                ),
                                 Spacer(),
                                 InkWell(
                                   onTap: () {
@@ -118,7 +93,7 @@ class Homepage extends StatelessWidget {
                                     ));
                                   },
                                   child: Container(
-                                      height: 300,
+                                      height: 270,
                                       width: double.infinity,
                                       decoration: BoxDecoration(
                                         color: Colors.white12,
@@ -148,13 +123,13 @@ class Homepage extends StatelessWidget {
                                                             top: 5),
                                                         height: 3,
                                                         width: 100,
-                                                        decoration: BoxDecoration(
-                                                            color:
-                                                                Colors.black12,
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        20)),
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: Colors.black12,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(20),
+                                                        ),
                                                       )
                                                     ],
                                                   ),
@@ -203,7 +178,7 @@ class Homepage extends StatelessWidget {
                                                           const EdgeInsets.all(
                                                               8.0),
                                                       child: Container(
-                                                        height: 140,
+                                                        height: 160,
                                                         width: 80,
                                                         decoration: BoxDecoration(
                                                             color:

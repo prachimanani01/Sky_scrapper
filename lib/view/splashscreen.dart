@@ -9,15 +9,15 @@ class Splashscreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Timer(Duration(seconds: 5), () {
+    Timer(Duration(seconds: 10), () {
       Navigator.pushReplacementNamed(context, Routes.home_page);
     });
     return Scaffold(
-      backgroundColor: Color(0xffFFFFFF),
+      backgroundColor: Color(0xffF3F7FB),
       body: Center(
           child: Image(
         image: NetworkImage(
-            "https://icon-library.com/images/weather-icon-gif/weather-icon-gif-26.jpg"),
+            "https://i.pinimg.com/originals/79/35/fd/7935fdf1fe2c5dd8205de03a214befb0.gif"),
       )),
     );
   }
